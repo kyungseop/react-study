@@ -24456,7 +24456,7 @@
 	}
 	
 	/**
-	 * Returns true if a <Link> to the given pathname/query combination is
+	 * Returns true if a <MoveLink> to the given pathname/query combination is
 	 * currently active.
 	 */
 	function isActive(_ref, indexOnly, currentLocation, routes, params) {
@@ -25142,7 +25142,7 @@
 	}
 	
 	/**
-	 * A <Link> is used to create an <a> element that links to a route.
+	 * A <MoveLink> is used to create an <a> element that links to a route.
 	 * When that route is active, the link gets the value of its
 	 * activeClassName prop.
 	 *
@@ -25152,12 +25152,12 @@
 	 *
 	 * You could use the following component to link to that route:
 	 *
-	 *   <Link to={`/posts/${post.id}`} />
+	 *   <MoveLink to={`/posts/${post.id}`} />
 	 *
 	 * Links may pass along location state and/or query string parameters
 	 * in the state/query props, respectively.
 	 *
-	 *   <Link ... query={{ show: true }} state={{ the: 'state' }} />
+	 *   <MoveLink ... query={{ show: true }} state={{ the: 'state' }} />
 	 */
 	var Link = _react2.default.createClass({
 	  displayName: 'Link',
@@ -25190,7 +25190,7 @@
 	
 	    if (event.defaultPrevented) return;
 	
-	    !this.context.router ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, '<Link>s rendered outside of a router context cannot navigate.') : (0, _invariant2.default)(false) : void 0;
+	    !this.context.router ? process.env.NODE_ENV !== 'production' ? (0, _invariant2.default)(false, '<MoveLink>s rendered outside of a router context cannot navigate.') : (0, _invariant2.default)(false) : void 0;
 	
 	    if (isModifiedEvent(event) || !isLeftClickEvent(event)) return;
 	
@@ -25222,7 +25222,7 @@
 	
 	    var props = _objectWithoutProperties(_props2, ['to', 'query', 'hash', 'state', 'activeClassName', 'activeStyle', 'onlyActiveOnIndex']);
 	
-	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(!(query || hash || state), 'the `query`, `hash`, and `state` props on `<Link>` are deprecated, use `<Link to={{ pathname, query, hash, state }}/>. http://tiny.cc/router-isActivedeprecated') : void 0;
+	    process.env.NODE_ENV !== 'production' ? (0, _routerWarning2.default)(!(query || hash || state), 'the `query`, `hash`, and `state` props on `<MoveLink>` are deprecated, use `<MoveLink to={{ pathname, query, hash, state }}/>. http://tiny.cc/router-isActivedeprecated') : void 0;
 	
 	    // Ignore if rendered outside the context of router, simplifies unit testing.
 	    var router = this.context.router;

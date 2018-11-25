@@ -1,3 +1,17 @@
+# TodoApp 설명
+- 캘린더에서 일자를 클릭하면 일감 등록
+- 일감을 등록하면, 리스트와 캘린더 모두에 일감이 표시
+- 완료된 일감은 일감리스트에서 마우스로 더블클릭
+- 캘린더 Year 선택시 화면표시는 추후 작업예정
+
+# Container component 란
+
+Well, a container component is a component that is responsible for retrieving data, 
+and in order to get that data, the component needs to use Redux's connect and mapStateToProps functions.
+
+https://www.thegreatcodeadventure.com/the-react-plus-redux-container-pattern/
+
+
 # Redux Todos with Undo Example
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
@@ -8,28 +22,5 @@ Projects built with Create-React-App include support for ES6 syntax, as well as 
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` or `yarn start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.

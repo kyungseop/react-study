@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
-import {Button, Row, Col} from 'antd'
+import {Button, List, Avatar} from 'antd'
 
 
 class TodoList extends React.Component {
@@ -18,24 +18,21 @@ class TodoList extends React.Component {
 
     render() {
         return (
-            <div style={{height: 50}}>
-                {this.props.todos.map(todo =>
-                    <div key={todo.id}>
-                        <Row>
-                            <Col span={8}>
-                                <Todo style={{}}
-                                      {...todo}
-                                      onClick={() => this.props.onTodoClick(todo.id)}
-                                />
-                            </Col>
-                            <Col span={8}>
-                                <Button shape="circle" icon="close"
-                                        onClick={() => this.props.onRemoveClick(todo.id)}/>
-                            </Col>
-                        </Row>
-                    </div>
-                )}
-            </div>
+            <List
+                itemLayout='horizontal'
+                footer={'총 목록 수 : ' + this.props.todos.length}
+                dataSource={this.props.todos}
+                renderItem={(item, index) => (
+                    <List.Item actions={[<Todo {...item} onClick={() => this.props.onTodoClick(item.id)}/>,
+                        <Button shape="circle" icon="close"
+                                onClick={() => this.props.onRemoveClick(item.id)}/>]}>
+                        <List.Item.Meta
+                            avatar={<Avatar style={{backgroundColor: item.completed ? '#87d068' : ''}}
+                                            icon="schedule"/>}
+                            // title={index+1}
+                        />
+                    </List.Item>
+                )}/>
         );
     }
 

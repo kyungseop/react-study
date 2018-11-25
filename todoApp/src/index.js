@@ -5,11 +5,11 @@ import App from './components/App'
 import reducer from './reducers'
 import { createStore } from 'redux'
 
-const store = createStore(reducer)
+const store = createStore(reducer);
 
 render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
-)
+);

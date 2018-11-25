@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addTodo} from '../actions'
-import {Icon, Input, Form} from 'antd';
+import {addTodo} from '../actions/actions'
+import {Alert, Form, Icon, Input} from 'antd';
+import moment from 'moment'
 
 const FormItem = Form.Item;
 
@@ -10,16 +11,32 @@ class AddTodo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            todo: ''
+            todo: {
+                text: '',
+                selectedDate: '',
+                createdDateTime: ''
+            }
         };
     }
 
     onChangeTodo = (e) => {
-        this.setState({todo: e.target.value});
+
+        this.setState(
+            {
+                todo: {
+                    text: e.target.value,
+                    selectedDate: this.props.selectedDate,
+                    createdDateTime: moment().format()
+                }
+            });
+    };
+
+    getInitTodo = () => {
+        return {todo: {text: '', selectedDate: '', createdDateTime: ''}};
     };
 
     emitEmpty = () => {
-        this.setState({todo: ''});
+        this.setState(this.getInitTodo);
     };
 
     render() {
@@ -28,19 +45,20 @@ class AddTodo extends React.Component {
 
         return (
             <div>
+                <Alert message={`선택일: ${this.props.selectedDate}`}/>
                 <Form onSubmit={e => {
                     e.preventDefault();
-                    if (!this.state.todo.trim()) {
+                    if (!todo.text.trim()) {
                         return
                     }
-                    this.props.dispatch(addTodo(this.state.todo))
+                    console.log('[AddTodo.js] before addTodo : ', todo);
+                    this.props.dispatch(addTodo(todo));
                     this.emitEmpty();
                 }}>
                     <FormItem>
                         <Input
-                            style={{width: '40%'}}
                             suffix={suffix}
-                            value={todo}
+                            value={todo.text}
                             placeholder="할일을 적어 주세요."
                             onChange={this.onChangeTodo}>
                         </Input>
@@ -51,4 +69,8 @@ class AddTodo extends React.Component {
     }
 }
 
-export default connect()(AddTodo)
+const mapStateToProps = (state) => ({
+    selectedDate: state.todosCalendar
+});
+
+export default connect(mapStateToProps)(AddTodo)

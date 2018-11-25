@@ -1,6 +1,6 @@
 import React from 'react'
 import FilterLink from '../containers/FilterLink'
-import {Button, Row, Col} from 'antd'
+import {Row} from 'antd'
 
 
 class Footer extends React.Component {

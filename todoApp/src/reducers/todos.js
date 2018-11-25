@@ -11,6 +11,7 @@ const todo = (state, action) => {
             return {
                 id: action.id,
                 text: action.text,
+                selectedDate: action.selectedDate,
                 completed: false
             };
         case TOGGLE_TODO:
@@ -38,8 +39,6 @@ const todos = (state = [], action) => {
                 todo(t, action)
             );
         case REMOVE_TODO:
-            console.log('REMOVE_TODO action ',action);
-            console.log('REMOVE_TODO  state',state);
            let _state =  _.clone(state);
             _.remove(_state, (todo) => (todo.id === action.id));
             return _state;
